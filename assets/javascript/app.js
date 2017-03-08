@@ -21,18 +21,22 @@ $(document).ready(function(){
 	if (gameOver === false) { 
 		startQuestionRoll();
 		
-		$("#0, #1, #2, #3").on("click", function() {
-		//Correct or incorrect check for selection
-		if (id === questions[currentQues].correctAnswer) {
+		$(".0, .1, .2, .3").on("click", function() {
+		//Correct or incorrect check for selection. Used == instead of === since == checks for same answers, but not same type.
+		if ($(this).attr("class") == questions[currentQues].correctAnswer) {
 			correctAnswers++;
 			currentQues++;
+			console.log("You're correct!")
+			console.log(correctAnswers)
+			console.log(currentQues)
 		}
 		else { 
 			$(".question").html("You're incorrect!");
 			$(".choices").html("The answer is " + questions[currentQues].correctAnswer + "!");
+			console.log($(this).attr("class"));
+			console.log(questions[currentQues].correctAnswer);
 		}
 		})
-		console.log(this)
 
 	}
 });
@@ -45,7 +49,7 @@ function startQuestionRoll() {
 
 	for (var i = 0; i < qChoices; i++) {
 		choice = questions[currentQues].choices[i];
-		$("<div id ='"+i+"'>" + choice + "</div>").appendTo(".choices");
+		$("<div class ='"+i+"'>" + choice + "</div>").appendTo(".choices");
 	}
 };
 
