@@ -35,7 +35,7 @@ $(document).ready(function() {
                 console.log(currentQues)
                 clearInterval(timerId)
                 timer = 30;
-                $(".choices").empty() // Everything seems to work, but it won't retain the listen event.
+                $(".choices").text("") // Everything seems to work, but it won't retain the listen event.
                 // Click event for divs disappear after one right answer.
                 startQuestionRoll() 
 
